@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,6 +36,8 @@ namespace WebApiVersoning
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 //  options.DefaultApiVersion = new ApiVersion(1, 1); // This will be equalent to version 1.1
                 options.DefaultApiVersion = ApiVersion.Default;
+                //options.ApiVersionReader = new MediaTypeApiVersionReader("version"); // Passing version info with accept header
+                options.ApiVersionReader = new HeaderApiVersionReader("X-Version"); // Passing version info as Api header
             });
         }
 
