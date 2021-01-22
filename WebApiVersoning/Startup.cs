@@ -33,6 +33,8 @@ namespace WebApiVersoning
             });
             services.AddApiVersioning(options=> {
                 options.AssumeDefaultVersionWhenUnspecified = true;
+                //  options.DefaultApiVersion = new ApiVersion(1, 1); // This will be equalent to version 1.1
+                options.DefaultApiVersion = ApiVersion.Default;
             });
         }
 
