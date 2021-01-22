@@ -27,3 +27,4 @@ D:\CODE\Sample\WebApiVersoning\WebApiVersoning\obj\Debug\net5.0\WebApiVersoning.
 D:\CODE\Sample\WebApiVersoning\WebApiVersoning\obj\Debug\net5.0\ref\WebApiVersoning.dll
 D:\CODE\Sample\WebApiVersoning\WebApiVersoning\obj\Debug\net5.0\WebApiVersoning.pdb
 D:\CODE\Sample\WebApiVersoning\WebApiVersoning\obj\Debug\net5.0\WebApiVersoning.genruntimeconfig.cache
+D:\CODE\Sample\WebApiVersoning\WebApiVersoning\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll

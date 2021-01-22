@@ -31,6 +31,7 @@ namespace WebApiVersoning
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApiVersoning", Version = "v1" });
             });
+            services.AddApiVersioning();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
