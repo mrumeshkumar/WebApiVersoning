@@ -30,14 +30,19 @@ namespace WebApiVersoning
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApiVersoning", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApiVersoning", Version = "V1" });
             });
             services.AddApiVersioning(options=> {
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 //  options.DefaultApiVersion = new ApiVersion(1, 1); // This will be equalent to version 1.1
                 options.DefaultApiVersion = ApiVersion.Default;
-                //options.ApiVersionReader = new MediaTypeApiVersionReader("version"); // Passing version info with accept header
-                options.ApiVersionReader = new HeaderApiVersionReader("X-Version"); // Passing version info as Api header
+                //options.ApiVersionReader = new MediaTypeApiVersionReader("version"); // 1- Passing version info with accept header
+                //options.ApiVersionReader = new HeaderApiVersionReader("X-Version"); // 2- Passing version info as Api header
+
+                options.ApiVersionReader = ApiVersionReader.Combine(
+                    new MediaTypeApiVersionReader("version"),
+                    new HeaderApiVersionReader("X-Version") 
+                    ); // Combined Passing version info with accept header and Api Header
             });
         }
 
