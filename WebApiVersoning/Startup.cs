@@ -46,11 +46,11 @@ namespace WebApiVersoning
                     new HeaderApiVersionReader("X-Version")
                     ); // Combined Passing version info with accept header and Api Header
 
-                options.Conventions.Controller<UsersController>()
-                .HasDeprecatedApiVersion(1, 0)
-                .HasApiVersion(2, 0)
-                .Action(typeof(UsersController).GetMethod(nameof(UsersController.GetV2))!)
-                .MapToApiVersion(2,0);
+                //options.Conventions.Controller<UsersController>()
+                //.HasDeprecatedApiVersion(1, 0)
+                //.HasApiVersion(2, 0)
+                //.Action(typeof(UsersController).GetMethod(nameof(UsersController.GetV2))!)
+                //.MapToApiVersion(2,0);
 
                 options.ReportApiVersions = true;
             });
