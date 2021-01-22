@@ -39,10 +39,10 @@ namespace WebApiVersoning
                 //options.ApiVersionReader = new MediaTypeApiVersionReader("version"); // 1- Passing version info with accept header
                 //options.ApiVersionReader = new HeaderApiVersionReader("X-Version"); // 2- Passing version info as Api header
 
-                options.ApiVersionReader = ApiVersionReader.Combine(
-                    new MediaTypeApiVersionReader("version"),
-                    new HeaderApiVersionReader("X-Version") 
-                    ); // Combined Passing version info with accept header and Api Header
+                //options.ApiVersionReader = ApiVersionReader.Combine(
+                //    new MediaTypeApiVersionReader("version"),
+                //    new HeaderApiVersionReader("X-Version") 
+                //    ); // Combined Passing version info with accept header and Api Header
 
                 options.ReportApiVersions = true;
             });

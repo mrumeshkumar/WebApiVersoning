@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebApiVersoning.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiversion}/[controller]")]
     [ApiController]
     [ApiVersion("1.0", Deprecated =true)]
     [ApiVersion("2.0")]
