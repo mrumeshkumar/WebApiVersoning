@@ -43,6 +43,8 @@ namespace WebApiVersoning
                     new MediaTypeApiVersionReader("version"),
                     new HeaderApiVersionReader("X-Version") 
                     ); // Combined Passing version info with accept header and Api Header
+
+                options.ReportApiVersions = true;
             });
         }
 
