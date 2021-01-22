@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace WebApiVersoning.Controllers
 {
-    [Route("api/v{version:apiversion}/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    [ApiVersion("1.0", Deprecated =true)]
-    [ApiVersion("2.0")]
+    //[ApiVersion("1.0", Deprecated =true)]
+    //[ApiVersion("2.0")]
     public class UsersController : ControllerBase
     {
         // GET: api/<UsersController>
@@ -54,7 +54,7 @@ namespace WebApiVersoning.Controllers
 
         // GET api/<UsersController>/5
         [HttpGet("{userId}")]
-        [MapToApiVersion("2.0")]
+       // [MapToApiVersion("2.0")]
         public IActionResult GetV2([FromRoute] int userId)
         {
             var user = new UserV2

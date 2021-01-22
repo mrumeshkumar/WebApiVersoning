@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiVersoning.Controllers;
 
 namespace WebApiVersoning
 {
@@ -39,10 +41,16 @@ namespace WebApiVersoning
                 //options.ApiVersionReader = new MediaTypeApiVersionReader("version"); // 1- Passing version info with accept header
                 //options.ApiVersionReader = new HeaderApiVersionReader("X-Version"); // 2- Passing version info as Api header
 
-                //options.ApiVersionReader = ApiVersionReader.Combine(
-                //    new MediaTypeApiVersionReader("version"),
-                //    new HeaderApiVersionReader("X-Version") 
-                //    ); // Combined Passing version info with accept header and Api Header
+                options.ApiVersionReader = ApiVersionReader.Combine(
+                    new MediaTypeApiVersionReader("version"),
+                    new HeaderApiVersionReader("X-Version")
+                    ); // Combined Passing version info with accept header and Api Header
+
+                options.Conventions.Controller<UsersController>()
+                .HasDeprecatedApiVersion(1, 0)
+                .HasApiVersion(2, 0)
+                .Action(typeof(UsersController).GetMethod(nameof(UsersController.GetV2))!)
+                .MapToApiVersion(2,0);
 
                 options.ReportApiVersions = true;
             });
