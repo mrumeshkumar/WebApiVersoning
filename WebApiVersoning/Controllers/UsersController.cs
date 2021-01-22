@@ -10,21 +10,23 @@ namespace WebApiVersoning.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     public class UsersController : ControllerBase
     {
         // GET: api/<UsersController>
         [HttpGet]
         public IActionResult Get()
         {
-            List<User> users = new List<User>();
-            var user1 = new User
+            List<UserV1> users = new List<UserV1>();
+            var user1 = new UserV1
             {
                 UserId = 1,
                 UserName = "Ronny Willims",
                 Age = 35
             };
 
-            var user2 = new User
+            var user2 = new UserV1
             {
                 UserId = 2,
                 UserName = "Jony Willims",
@@ -38,12 +40,28 @@ namespace WebApiVersoning.Controllers
 
         // GET api/<UsersController>/5
         [HttpGet("{userId}")]
-        public IActionResult Get([FromRoute] int userId)
+        public IActionResult GetV1([FromRoute] int userId)
         {
-            var user = new User
+            var user = new UserV1
             {
                 UserId = userId,
                 UserName = "Ronny Willims",
+                Age = 35
+
+            };
+            return Ok(user);
+        }
+
+        // GET api/<UsersController>/5
+        [HttpGet("{userId}")]
+        [MapToApiVersion("2.0")]
+        public IActionResult GetV2([FromRoute] int userId)
+        {
+            var user = new UserV2
+            {
+                UserId = userId,
+                UserName = "Ronny Willims",
+                UserEmail= "RonnyWillims@gmail.com",
                 Age = 35
 
             };
