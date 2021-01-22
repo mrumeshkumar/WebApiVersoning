@@ -10,7 +10,7 @@ namespace WebApiVersoning.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ApiVersion("1.0")]
+    [ApiVersion("1.0", Deprecated =true)]
     [ApiVersion("2.0")]
     public class UsersController : ControllerBase
     {
